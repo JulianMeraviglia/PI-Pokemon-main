@@ -28,26 +28,35 @@ module.exports = (sequelize) => {
     },
     speed: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      //allowNull: false,
     },
     height: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       // allowNull: false,
     },
     weight: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT
+      ,
       //allowNull: false,
     },
     img: {
       type: DataTypes.STRING,
+      defaultValue: 'https://via.placeholder.com/250x180',
       //allowNull: false,
+      validate: {
+        isUrl: true,
+        isImg(value) {
+          if (value.match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) === null) {
+            throw new Error('From DB: Image format not valid!')
+          }
+        }
+      }
     },
     fromDb: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true,
     }
-
   }, {
     timestamps: false,
   });
