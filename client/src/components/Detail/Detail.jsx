@@ -1,0 +1,85 @@
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams,Link } from "react-router-dom";
+import { getDetail, cleanDetail } from "../../actions";
+import Loader from "../Loader/Loader";
+import NavBar from "../NavBar/NavBar";
+import styles from './detail.module.css';
+
+export default function Detail(props) {
+    const pokeDetail = useSelector(state => state.detail);
+    //const loading = useSelector((state) => state.loading);
+
+    const dispatch = useDispatch();
+    const { id } = useParams()
+
+    useEffect(() => {
+        dispatch(getDetail(id))
+    }, [dispatch, id]);
+
+    // useEffect(() => {
+    //     return dispatch(loadingAgain())
+    // }, [dispatch]);
+
+    // function handleDogDelete() {
+    //     dispatch(deleteDog(dogId))
+    // };
+
+    function handleClick() {
+        dispatch(cleanDetail());
+        //dispatch(cleanPokemons());
+    }
+
+
+    return (
+
+        <div >
+            <nav >
+                <div >
+                    <Link to="/home"><h1 onClick={() => handleClick()}>Home</h1></Link>
+                </div>
+            </nav>
+
+            <div>
+                {pokeDetail.length === 0 ?
+
+                    <Loader />
+
+                    :
+                    <div>
+                        {typeof pokeDetail[0] === 'object' ?
+                            <div>
+                                <div className={styles.detailBig}>
+                                    <div className={styles.imgDtBox}><img className={styles.detailImg} src={pokeDetail[0].img} alt='Sin Imagen' /></div>
+                                    <div className={styles.infoBox}>
+                                        <div className={styles.smallIfBox}>
+                                            <h2 className={styles.nameDetail}>{pokeDetail[0].name}</h2>
+                                            <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>ID: </b>{pokeDetail[0].id}</span></div>
+                                            <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Hp: </b>{pokeDetail[0].hp}</span></div>
+                                            <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Ataque: </b>{pokeDetail[0].attack}</span></div>
+                                            <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Defensa: </b>{pokeDetail[0].defense}</span></div>
+                                            <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Velocidad: </b>{pokeDetail[0].speed}</span></div>
+                                            <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Altura: </b>{pokeDetail[0].height} Cm</span></div>
+                                            <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Peso: </b>{pokeDetail[0].weight} Kg</span></div>
+
+                                        </div>
+
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            :
+                            <div>
+                                <div>Detail not found</div>
+
+                            </div>
+
+                        }
+                    </div>
+                }
+            </div>
+
+
+        </div>
+    )
+}

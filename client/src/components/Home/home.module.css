@@ -1,0 +1,59 @@
+* {
+    text-decoration: none;
+
+
+
+
+}
+
+
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 20px;
+    background-color: whitesmoke;
+}
+
+.filterContainer {
+    display: flex;
+    justify-content: center;
+
+
+    margin-right: 50px;
+    padding: 20px;
+    background-color: red;
+
+}
+
+.cardsContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+
+
+
+
+    background-image: url(https://images2.alphacoders.com/106/1060624.png);
+    
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+    top: 20px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-position: center;
+    max-width: 100vw;
+    min-height: 85vh;  
+
+    
+    
+
+}

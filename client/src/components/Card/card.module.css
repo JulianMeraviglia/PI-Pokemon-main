@@ -1,0 +1,86 @@
+.photosCont {
+    display: flex;
+    height: 150px;
+    width: 160px;
+    /* align-content: center; */
+    justify-content: center;
+    /* align-items: center; */
+    margin-left: auto;
+    margin-right: auto;
+    /* border-radius: 30px; */
+}
+
+.pokePhotos {
+
+    object-fit: cover;
+    max-height: 150px;
+    min-height: 100px;
+    min-width: 70px;
+    max-width: 160px;
+    /* border-radius: 30px; */
+
+}
+
+.cardIns {
+    padding-top: 8px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 45px;
+    margin-right: 45px;
+
+    background-color: rgba(84, 196, 240, 0.1);
+    width: 180px;
+    height: 300px;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 10px;
+    
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 0px 10px 10px rgba(0, 0, 0, 0.419);
+    transition: 0.3s;
+    overflow: auto;
+    -ms-overflow-style: marquee;
+
+}
+.cardIns:hover{
+    box-shadow: 0px 0px 12px 12px rgba(0, 0, 0, 0.496);
+    background-color: rgba(39, 76, 119, 0.5);
+
+}
+
+.cardType {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    
+    font-size: 0.95em;
+    margin: 16px 25px;
+    font-weight: 450;
+    color: red;
+}
+
+.cardTypes{
+
+    color: red;
+    font-size: 0.95em;
+    
+    font-weight: 450;
+
+}
+
+.cardAttack {
+    font-size: 0.9em;
+    font-weight: 450;
+    margin: 16px;
+}
+
+.cardName {
+    margin: 12px;
+    font-weight: 600;
+    color: red;
+    font-size: 0.95em;
+    
+    
+    
+}

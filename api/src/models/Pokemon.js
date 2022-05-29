@@ -12,45 +12,44 @@ module.exports = (sequelize) => {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     hp: {
       type: DataTypes.INTEGER,
-      //allowNull: false,
+      allowNull: true,
     },
     attack: {
       type: DataTypes.INTEGER,
-      //allowNull: false,
+      allowNull: true,
     },
     defense: {
       type: DataTypes.INTEGER,
-      //allowNull: false,
+      allowNull: true,
     },
     speed: {
       type: DataTypes.INTEGER,
-      //allowNull: false,
+      allowNull: true,
     },
     height: {
       type: DataTypes.INTEGER,
-      // allowNull: false,
+      allowNull: true,
     },
     weight: {
-      type: DataTypes.FLOAT
-      ,
-      //allowNull: false,
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
     img: {
       type: DataTypes.STRING,
-      defaultValue: 'https://via.placeholder.com/250x180',
-      //allowNull: false,
-      validate: {
-        isUrl: true,
-        isImg(value) {
-          if (value.match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) === null) {
-            throw new Error('From DB: Image format not valid!')
-          }
-        }
-      }
+      //defaultValue: 'https://via.placeholder.com/250x180',
+      allowNull: true,
+      // validate: {
+      //   isUrl: true,
+      //   isImg(value) {
+      //     if (value.match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) === null) {
+      //       throw new Error('From DB: Image format not valid!')
+      //     }
+      //   }
+      // }
     },
     fromDb: {
       type: DataTypes.BOOLEAN,
