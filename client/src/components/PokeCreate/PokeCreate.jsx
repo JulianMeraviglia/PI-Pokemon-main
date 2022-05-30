@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { getPokes, getTypes, postPoke } from '../../actions';
+import { getPokes, getTypes, postPoke, changeLoading, cleanPokes, cleanDetail } from '../../actions';
 
 import styles from './pokeCreate.module.css';
 import { validate } from './validate';
@@ -24,9 +24,10 @@ export default function PokeCreate() {
     const allPokesCheck = useSelector((state) => state.allPokes);
 
     useEffect(() => {
-        dispatch(getPokes());
+        //dispatch(getPokes());
         dispatch(getTypes());
-        //dispatch(cleanPokemons());
+        dispatch(cleanPokes())
+        //dispatch(cleanDetail());
     }, [dispatch]);
 
     const [input, setInput] = useState({
@@ -82,25 +83,27 @@ export default function PokeCreate() {
         })
     }
 
-    function handleSubmit(e) {        
-            e.preventDefault();
-            dispatch(postPoke(input))
-            alert('Pokemon created successfully.')
-            setInput({
-                name: '',
-                hp: '',
-                attack: '',
-                defense: '',
-                speed: '',
-                height: '',
-                weight: '',
-                img: '',
-                types: []
-            })
-            //dispatch(cleanPokemons());
-            //dispatch(cleanDetail());
-           history.push('/home');
-         
+    function handleSubmit(e) {
+        e.preventDefault();
+        dispatch(postPoke(input))
+        alert('Pokemon created successfully.')
+        setInput({
+            name: '',
+            hp: '',
+            attack: '',
+            defense: '',
+            speed: '',
+            height: '',
+            weight: '',
+            img: '',
+            types: []
+        })
+        
+        
+        history.push('/home');
+        
+        dispatch(changeLoading());
+
     }
 
 
@@ -117,22 +120,22 @@ export default function PokeCreate() {
             <div className={styles.pokemonCreateContainer}>
                 <div className={styles.pokemonCreate}>
                     <h1>Crea tu Poke</h1>
-                    <form className={styles.formContainer} onSubmit={(e) => handleSubmit(e)}  autoComplete="off">
+                    <form className={styles.formContainer} onSubmit={(e) => handleSubmit(e)} autoComplete="off">
                         <div className={styles.inputContainer}>
                             <label>Nombre*: </label>
-                            <input type='text' value={input.name} name='name' placeholder='Nombre' onChange={handleChange} className={styles.inputName}  />
+                            <input type='text' value={input.name} name='name' placeholder='Nombre' onChange={handleChange} className={styles.inputName} />
                             <span>{errors.name}</span>
                         </div>
                         <div className={styles.inputContainer}>
                             <label>Hp: </label>
-                            <input type='number' value={input.hp} name='hp' placeholder='Hp' max="250" min="0"  onChange={handleChange} />
+                            <input type='number' value={input.hp} name='hp' placeholder='Hp' max="250" min="0" onChange={handleChange} />
                             <span>{errors.hp}</span>
                             {/* onFocus={handleChange} */}
 
                         </div>
                         <div className={styles.inputContainer}>
                             <label>Ataque: </label>
-                            <input type='number' value={input.attack} name='attack' placeholder='Ataque' max="250" min="0"  onChange={handleChange} />
+                            <input type='number' value={input.attack} name='attack' placeholder='Ataque' max="250" min="0" onChange={handleChange} />
                             <span>{errors.attack}</span>
                         </div>
                         <div className={styles.inputContainer}>
@@ -142,22 +145,22 @@ export default function PokeCreate() {
                         </div>
                         <div className={styles.inputContainer}>
                             <label>Velocidad: </label>
-                            <input type='number' value={input.speed} name='speed' placeholder='Velocidad' max="250" min="0"  onChange={handleChange} />
+                            <input type='number' value={input.speed} name='speed' placeholder='Velocidad' max="250" min="0" onChange={handleChange} />
                             <span>{errors.speed}</span>
                         </div>
                         <div className={styles.inputContainer}>
                             <label>Altura cm: </label>
-                            <input type='number' value={input.height} name='height' placeholder='Altura' max="25" min="0"  onChange={handleChange} />
+                            <input type='number' value={input.height} name='height' placeholder='Altura' max="25" min="0" onChange={handleChange} />
                             <span>{errors.height}</span>
                         </div>
                         <div className={styles.inputContainer}>
                             <label>Peso Kg: </label>
-                            <input type='number' value={input.weight} name='weight' placeholder='Peso' max="1000" min="0"  onChange={handleChange} />
+                            <input type='number' value={input.weight} name='weight' placeholder='Peso' max="1000" min="0" onChange={handleChange} />
                             <span>{errors.weight}</span>
                         </div>
                         <div className={styles.inputContainer}>
                             <label>Imagen: </label>
-                            <input type='text' value={input.img} name='img' placeholder='URL'  onChange={handleChange} />
+                            <input type='text' value={input.img} name='img' placeholder='URL' onChange={handleChange} />
                             <span>{errors.img}</span>
                         </div>
                         <div className={styles.inputContainer}>
@@ -189,8 +192,8 @@ export default function PokeCreate() {
                             //     true
                             //     : false} 
 
-                                disabled={errors.button || input.name === ''}
-                                >
+                            disabled={errors.button || input.name === ''}
+                        >
                             Crear
                         </button>
 

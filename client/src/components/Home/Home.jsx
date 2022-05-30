@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect , useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-import { getPokes, loadingPokes } from '../../actions';
+import { getPokes, orderByAttack, filterByOrigin, orderByName, getTypes, filterByType, changeLoading, cleanPokes } from '../../actions';
 import SearchBar from '../SearchBar/SearchBar';
 import Card from '../Card/Card'
 import Loader from '../Loader/Loader';
@@ -18,6 +18,8 @@ export default function Home() {
     const loading = useSelector((state) => state.loading);
     const dispatch = useDispatch();
 
+    const pokesTypes = useSelector ((state) => state.types);
+
     const [currentPage, setCurrentPage] = useState(1);
     const pokesPerPage = 12;
     const indexOfLastPoke = currentPage * pokesPerPage;
@@ -31,13 +33,45 @@ export default function Home() {
 
     useEffect(() => {
         dispatch(getPokes());
+        dispatch(getTypes());
     }, [dispatch])
 
-    // useEffect(() => {
-    //     return dispatch(loadingPokes())
-    // //     dispatch(loading())
+    
 
-    //  }, [dispatch])
+    function handleUpdate(e) {
+        e.preventDefault();
+        dispatch(cleanPokes());
+        dispatch(changeLoading())
+        dispatch(getPokes());
+        setCurrentPage(1);
+    }
+
+    function handleAttack(e) {
+        e.preventDefault();
+        dispatch(orderByAttack(e.target.value));
+        setCurrentPage(1);
+        //setOrder(e.target.value);
+    }
+
+    function handleFilterByOrigin(e) {
+        e.preventDefault();
+        dispatch(filterByOrigin(e.target.value))
+        setCurrentPage(1);
+    }
+
+    function handleOrderByName(e) {
+        e.preventDefault();
+        dispatch(orderByName(e.target.value));
+        setCurrentPage(1);
+        //setOrder(e.target.value);
+    }
+
+    function handleFilterTypes(e) {
+        e.preventDefault();
+        dispatch(filterByType(e.target.value));
+        setCurrentPage(1);
+    }
+
 
 
 
@@ -48,7 +82,7 @@ export default function Home() {
             <nav className={styles.navContainer}>
                 <Link to='/' >Poke Land</Link>
                 <div>
-                    < SearchBar />
+                    < SearchBar pagination ={pagination} />
                 </div>
 
                 <Link to='/create' >Crear Poke</Link>
@@ -56,32 +90,32 @@ export default function Home() {
 
             <section className={styles.filterContainer}>
                 <button >Filter by </button>
-                <select >
-                    <option value=''>Type</option>
-                    <option value='all'>All Types</option>
-                    {/* {allPokemonsTypes?.map((t) => (
-                        <option className={styles.optionsSelect} key={t.name} value={t.name}>{t.name}</option>
-                    ))} */}
+                <select onChange={e => handleFilterTypes(e)} value='disabled'>
+                    <option value=''>Tipo</option>
+                    <option value='all'>Todos</option>
+                    {pokesTypes?.map((t) => (
+                        <option  key={t} value={t}>{t}</option>
+                    ))}
                 </select>
-                <select >
-                    <option value=''>Origin</option>
-                    <option value='all'>All</option>
+                <select onChange={e => handleFilterByOrigin(e)} value='disabled'>
+                    <option value=''>Origen</option>
+                    <option value='all'>Todos</option>
                     <option value='api'>API</option>
-                    <option value='created'>Created</option>
+                    <option value='created'>Creados</option>
                 </select>
-                <select value='disabled'>
-                    <option value=''>Name</option>
+                <select  onChange={e => handleOrderByName(e)} value='disabled' >
+                    <option value=''>Nombre</option>
                     <option value='asc'>A - Z</option>
                     <option value='desc'>Z - A</option>
                 </select>
-                <select value='disabled'>
+                <select  onChange={e => handleAttack(e)}  value='disabled'>
                     <option value=''>Attack</option>
-                    <option value='more_attack'>+ Attack </option>
-                    <option >- Attack </option>
+                    <option value='max_attack'>+ Attack </option>
+                    <option value='min_attack' >- Attack </option>
                 </select>
 
-                <button >
-                    Refresh All
+                <button onClick={e => {handleUpdate(e)}} >
+                    Todos los Pokes
                 </button>
 
             </section>

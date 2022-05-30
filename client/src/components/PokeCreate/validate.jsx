@@ -16,10 +16,14 @@ export const validate = (allPokesCheck, input) => {
 
     } else if (!input.name === '') {
 
-    } else if (!/^[a-zA-Z]+$/.test(input.name) || input.name.length > 10) {
+    } else if (!/^[a-zA-Z]+$/.test(input.name)) {
         errors.name = "Nombre no valido";
 
+    }else if (input.name.length > 15) {
+        errors.name = "Maximo 15 letras";
+
     }
+
 
     if (!input.attack) {
         errors.attack = "Este dato no se guardara";

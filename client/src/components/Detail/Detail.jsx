@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams,Link } from "react-router-dom";
-import { getDetail, cleanDetail } from "../../actions";
+import { getDetail, cleanDetail, cleanPokes, changeLoading} from "../../actions";
 import Loader from "../Loader/Loader";
 import NavBar from "../NavBar/NavBar";
 import styles from './detail.module.css';
@@ -26,8 +26,9 @@ export default function Detail(props) {
     // };
 
     function handleClick() {
+        dispatch(cleanPokes())
         dispatch(cleanDetail());
-        //dispatch(cleanPokemons());
+        dispatch(changeLoading());
     }
 
 

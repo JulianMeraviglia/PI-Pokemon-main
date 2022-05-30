@@ -13,10 +13,11 @@ router.get('/', async (req, res, next) => {
     try {
         if (name) {
             const pokeName = totalPokes.filter(el => el.name.toLowerCase().includes(name.toLowerCase()));
+            res.status(200).send(pokeName)
 
-            pokeName.length ?
-                res.status(200).send(pokeName) :
-                res.status(404).send('Poke not found');
+            // pokeName.length ?
+            //     res.status(200).send(pokeName) :
+            //     res.status(404).send('Poke not found');
         } else {
             res.status(200).send(totalPokes)
 
