@@ -152,7 +152,7 @@ export default function Home() {
                         )
                     }) :
                         <div className={styles.notfound}>
-                            <div>Pokes not found</div>
+                            <div>No se encontraron los Pokes</div>
 
                         </div>
 

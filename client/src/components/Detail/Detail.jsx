@@ -87,7 +87,7 @@ export default function Detail(props) {
                             </div>
                             :
                             <div className={styles.notfound}>
-                                <div>Detail not found</div>
+                                <div>No se encontro el detalle del Poke</div>
 
                             </div>
 

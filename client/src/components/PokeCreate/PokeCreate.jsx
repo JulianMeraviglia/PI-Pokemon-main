@@ -60,7 +60,7 @@ export default function PokeCreate() {
             types: [...input.types, e.target.value]
         }));
         if (e.target.value === input.types[0] && input.types.length < 2) {
-            alert("You can't select the same type 2 times")
+            alert("No se puede elegir dos veces el mismo")
         }
         else if (input.types.length < 2) {
             setInput({
@@ -68,7 +68,7 @@ export default function PokeCreate() {
                 types: [...input.types, e.target.value]
             })
         } else {
-            alert("Max 2 types")
+            alert("Maximo 2 tipos")
         }
     }
 
@@ -86,7 +86,7 @@ export default function PokeCreate() {
     function handleSubmit(e) {
         e.preventDefault();
         dispatch(postPoke(input))
-        alert('Pokemon created successfully.')
+        alert('Pokemon creado.')
         setInput({
             name: '',
             hp: '',
