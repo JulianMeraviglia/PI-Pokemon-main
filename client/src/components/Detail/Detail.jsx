@@ -67,8 +67,13 @@ export default function Detail(props) {
                                             <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Ataque: </b>{pokeDetail[0].attack}</span></div>
                                             <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Defensa: </b>{pokeDetail[0].defense}</span></div>
                                             <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Velocidad: </b>{pokeDetail[0].speed}</span></div>
-                                            <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Altura: </b>{pokeDetail[0].height} Cm</span></div>
-                                            <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Peso: </b>{pokeDetail[0].weight} Kg</span></div>
+                                            <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Altura: </b>
+                                                {pokeDetail[0].height ? `${pokeDetail[0].height} Cm` : null}
+                                            </span></div>
+
+                                            <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Peso: </b>
+                                                {pokeDetail[0].weight ? `${pokeDetail[0].weight} Kg` :
+                                                    null}  </span></div>
 
                                             <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Tipos: </b>
                                                 {pokeDetail[0].types.length === 1 ? pokeDetail[0].types[0] : pokeDetail[0].types.join(', ')}</span></div>
