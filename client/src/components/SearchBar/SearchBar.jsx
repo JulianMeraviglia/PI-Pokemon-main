@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getPokeByName, changeLoading } from '../../actions'
-// import styles from './searchBar.module.css'
+import { getPokeByName, changeLoading, cleanDetail, cleanPokes } from '../../actions'
+import styles from './searchBar.module.css'
 
 function SearchBar({pagination}) {
     const dispatch = useDispatch();
@@ -17,6 +17,8 @@ function SearchBar({pagination}) {
     function handleSubmit(e) {
         e.preventDefault();
         dispatch(changeLoading());
+        dispatch(cleanPokes());
+        dispatch(cleanDetail());
         dispatch(getPokeByName(name));
         pagination(1)
         setName('');
@@ -29,9 +31,9 @@ function SearchBar({pagination}) {
     // </div>
 
 
-    <div >
-        <input  type='text' value={name} placeholder='Nombre exacto...'  onChange={(e) => handleInputChange(e)} />
-        <button type='submit' onClick={(e) => handleSubmit(e)} disabled={name === "" ? true : false} >Buscar</button>
+    <div  >
+        <input className={styles.contentInput} type='text' value={name} placeholder='Nombre exacto...'  onChange={(e) => handleInputChange(e)} />
+        <button className={styles.contentButt} type='submit' onClick={(e) => handleSubmit(e)} disabled={name === "" ? true : false} >Buscar</button>
     </div>
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect , useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { getPokes, orderByAttack, filterByOrigin, orderByName, getTypes, filterByType, changeLoading, cleanPokes } from '../../actions';
@@ -18,14 +18,14 @@ export default function Home() {
     const loading = useSelector((state) => state.loading);
     const dispatch = useDispatch();
 
-    const pokesTypes = useSelector ((state) => state.types);
+    const pokesTypes = useSelector((state) => state.types);
 
     const [currentPage, setCurrentPage] = useState(1);
     const pokesPerPage = 12;
     const indexOfLastPoke = currentPage * pokesPerPage;
     const indexOfFirstPoke = indexOfLastPoke - pokesPerPage;
     const currentPokes = allPokes.slice(indexOfFirstPoke, indexOfLastPoke);
-    
+
 
     const pagination = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -36,7 +36,7 @@ export default function Home() {
         dispatch(getTypes());
     }, [dispatch])
 
-    
+
 
     function handleUpdate(e) {
         e.preventDefault();
@@ -78,52 +78,59 @@ export default function Home() {
 
     return (
 
-        <div>
-            <nav className={styles.navContainer}>
-                <Link to='/' >Poke Land</Link>
+        <div className={styles.back}>
+
+            {loading === false ?
                 <div>
-                    < SearchBar pagination ={pagination} />
+
+                    <nav className={styles.navContainer}>
+                        <Link className={styles.exit} to='/' >Poke Land</Link>
+                        <div>
+                            < SearchBar pagination={pagination} />
+                        </div>
+
+                        <Link className={styles.create} to='/create' >Crear Poke</Link>
+                    </nav>
+
+                    <section className={styles.filterContainer}>
+                        <h5 className={styles.ban} >Filtros </h5>
+                        <select className={styles.contentSelect} onChange={e => handleFilterTypes(e)} value='disabled'>
+                            <option value=''>Tipo</option>
+                            <option value='all'>Todos</option>
+                            {pokesTypes?.map((t) => (
+                                <option key={t} value={t}>{t}</option>
+                            ))}
+                        </select>
+                        <select className={styles.contentSelect} onChange={e => handleFilterByOrigin(e)} value='disabled'>
+                            <option value=''>Origen</option>
+                            <option value='all'>Todos</option>
+                            <option value='api'>API</option>
+                            <option value='created'>Creados</option>
+                        </select>
+                        <select className={styles.contentSelect} onChange={e => handleOrderByName(e)} value='disabled' >
+                            <option value=''>Nombre</option>
+                            <option value='asc'>A - Z</option>
+                            <option value='desc'>Z - A</option>
+                        </select>
+                        <select className={styles.contentSelect} onChange={e => handleAttack(e)} value='disabled'>
+                            <option value=''>Ataque</option>
+                            <option value='max_attack'>+ Attack </option>
+                            <option value='min_attack' >- Attack </option>
+                        </select>
+
+                        <button className={styles.ban2} onClick={e => { handleUpdate(e) }} >
+                            <div>Todos los Pokes</div>
+                        </button>
+
+                    </section>
                 </div>
+                :
+                null}
 
-                <Link to='/create' >Crear Poke</Link>
-            </nav>
-
-            <section className={styles.filterContainer}>
-                <button >Filter by </button>
-                <select onChange={e => handleFilterTypes(e)} value='disabled'>
-                    <option value=''>Tipo</option>
-                    <option value='all'>Todos</option>
-                    {pokesTypes?.map((t) => (
-                        <option  key={t} value={t}>{t}</option>
-                    ))}
-                </select>
-                <select onChange={e => handleFilterByOrigin(e)} value='disabled'>
-                    <option value=''>Origen</option>
-                    <option value='all'>Todos</option>
-                    <option value='api'>API</option>
-                    <option value='created'>Creados</option>
-                </select>
-                <select  onChange={e => handleOrderByName(e)} value='disabled' >
-                    <option value=''>Nombre</option>
-                    <option value='asc'>A - Z</option>
-                    <option value='desc'>Z - A</option>
-                </select>
-                <select  onChange={e => handleAttack(e)}  value='disabled'>
-                    <option value=''>Attack</option>
-                    <option value='max_attack'>+ Attack </option>
-                    <option value='min_attack' >- Attack </option>
-                </select>
-
-                <button onClick={e => {handleUpdate(e)}} >
-                    Todos los Pokes
-                </button>
-
-            </section>
-
-            { allPokes.length >= 12 ? 
-                    <Pagination pokesPerPage={pokesPerPage} allPokes={allPokes.length} pagination={pagination} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
-                    : null
-                    }
+            {allPokes.length >= 12 ?
+                <Pagination pokesPerPage={pokesPerPage} allPokes={allPokes.length} pagination={pagination} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                : null
+            }
 
 
 
@@ -137,7 +144,7 @@ export default function Home() {
                 <div className={styles.cardsContainer}>
                     {allPokes.length ? currentPokes.map((poke) => {
                         return (
-                            <div  key={poke.id}>
+                            <div key={poke.id}>
                                 <NavLink to={`/home/${poke.id}`}>
                                     <Card name={poke.name} img={poke.img} types={poke.types} />
                                 </NavLink>

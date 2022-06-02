@@ -105,6 +105,11 @@ export default function PokeCreate() {
         dispatch(changeLoading());
 
     }
+    function handleClick() {
+        dispatch(cleanPokes())
+        dispatch(cleanDetail());
+        dispatch(changeLoading());
+    }
 
 
 
@@ -112,8 +117,8 @@ export default function PokeCreate() {
         <div className={styles.pokemonCreatePage} >
 
             <nav className={styles.exitSearchAndCreateNav}>
-                <div className={styles.backContainer}>
-                    <Link to="/home"><h1 className={styles.back}>Home</h1></Link>
+                <div >
+                    <Link to="/home"><h1 onClick={() => handleClick()} className={styles.back}>Home</h1></Link>
                 </div>
             </nav>
 

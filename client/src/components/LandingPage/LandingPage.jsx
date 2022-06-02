@@ -7,7 +7,7 @@ export default function LandingPage() {
 
     return (
         <div className={styles.background}>  
-                <h1 className={styles.title}>Poke Land</h1>
+                <h1 className={styles.title}>Bienvenidos a Poke Land!!!</h1>
                 <Link to='/home'>
                     <button className={styles.button}>Ingresar</button>
                 </Link>

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams,Link } from "react-router-dom";
-import { getDetail, cleanDetail, cleanPokes, changeLoading} from "../../actions";
+import { useParams, Link } from "react-router-dom";
+import { getDetail, cleanDetail, cleanPokes, changeLoading } from "../../actions";
 import Loader from "../Loader/Loader";
 import NavBar from "../NavBar/NavBar";
 import styles from './detail.module.css';
@@ -34,12 +34,19 @@ export default function Detail(props) {
 
     return (
 
-        <div >
-            <nav >
+        <div className={styles.back}>
+            {/* <nav >
                 <div >
                     <Link to="/home"><h1 onClick={() => handleClick()}>Home</h1></Link>
                 </div>
-            </nav>
+            </nav> */}
+            {pokeDetail.length === 0 ?
+                null :
+                <div  >
+                    <Link className={styles.home} to="/home" onClick={() => handleClick()} >Home</Link>
+                </div>
+            }
+
 
             <div>
                 {pokeDetail.length === 0 ?
@@ -49,7 +56,7 @@ export default function Detail(props) {
                     :
                     <div>
                         {typeof pokeDetail[0] === 'object' ?
-                            <div>
+                            <div    >
                                 <div className={styles.detailBig}>
                                     <div className={styles.imgDtBox}><img className={styles.detailImg} src={pokeDetail[0].img} alt='Sin Imagen' /></div>
                                     <div className={styles.infoBox}>
@@ -63,14 +70,18 @@ export default function Detail(props) {
                                             <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Altura: </b>{pokeDetail[0].height} Cm</span></div>
                                             <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Peso: </b>{pokeDetail[0].weight} Kg</span></div>
 
+                                            <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Tipos: </b>
+                                                {pokeDetail[0].types.length === 1 ? pokeDetail[0].types[0] : pokeDetail[0].types.join(', ')}</span></div>
+
+
                                         </div>
 
-                                        
+
                                     </div>
                                 </div>
                             </div>
                             :
-                            <div>
+                            <div className={styles.notfound}>
                                 <div>Detail not found</div>
 
                             </div>
