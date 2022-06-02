@@ -3,7 +3,8 @@
     min-width: 100vh;
     font-size: 25px;
     color: white;
-    background-image: url(https://images.alphacoders.com/235/235203.png);
+    /* background-image: url(https://images.alphacoders.com/235/235203.png); */
+    background-image: url('../images/create.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

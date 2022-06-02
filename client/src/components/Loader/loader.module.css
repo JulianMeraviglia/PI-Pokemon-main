@@ -13,7 +13,9 @@
     display: flex;
     flex-flow: column wrap;
     justify-content: center;   
-    background-image: url(https://images.alphacoders.com/603/603479.png)
+    /* background-image: url(https://images.alphacoders.com/603/603479.png) */
+    background-image: url('../images/loading.png')
+
     /* background:radial-gradient(#9b59b6, #8e44ad); */
 }
 .wrapper{

@@ -1,5 +1,6 @@
 .background {
-    background-image: url(https://images7.alphacoders.com/592/592678.jpg);
+    /* background-image: url(https://images7.alphacoders.com/592/592678.jpg); */
+    background-image: url('../images/landing.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

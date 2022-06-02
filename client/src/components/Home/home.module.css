@@ -46,8 +46,8 @@
 }
 
 .back{
-    background-image: url(https://images2.alphacoders.com/106/1060624.png);
-    
+    /* background-image: url(https://images2.alphacoders.com/106/1060624.png); */
+    background-image: url('../images/home.png');
 
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -185,4 +185,10 @@
 
 .contentSelect option:hover {
     background-color: #ffe8d6;
+}
+
+.notfound{
+    margin-top: 50px;
+    color: red;
+    font-size: 2em;
 }
