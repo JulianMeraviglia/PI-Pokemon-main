@@ -52,6 +52,34 @@ router.get('/', async (req, res, next) => {
     }
 })
 
+// router.get('/', async (req, res, next) => {
+//     const { name } = req.query;
+//     if (!name) {
+//         let totalPokes = 'Hola'
+//         getAllInfo()
+//             .then(data => res.status(200).send(data))
+//             .catch(error => next(error))
+//     }
+
+
+//     try {
+//         if (name) {
+//             //const pokeName = totalPokes.filter(el => el.name.toLowerCase().includes(name.toLowerCase()));
+//             const pokeName = await getPokeByName(name)
+//             res.status(200).send(pokeName)
+
+//             // pokeName.length ?
+//             //     res.status(200).send(pokeName) :
+//             //     res.status(404).send('Poke not found');
+//         } else {
+//             // res.status(200).send(totalPokes)
+
+//         }
+//     } catch (error) {
+//         next(error)
+//     }
+// })
+
 
 
 // router.get('/:id', async (req, res, next) => {
@@ -80,7 +108,7 @@ router.get('/:id', async (req, res, next) => {
 
         if (Number.isInteger(+id)) {
             const poke = await getApiPokeByidOrName(id);
-            
+
             poke === undefined ?
                 res.status(200).send(['']) :
                 res.status(200).json([poke])
@@ -116,7 +144,7 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     let { img, name, types, hp, attack, defense, speed, weight, height, fromDb } = req.body;
-    name=name.toLowerCase()
+    name = name.toLowerCase()
     if (img === '') { img = 'https://via.placeholder.com/250x180' }
     if (types === '') { types = null }
     if (hp === '') { hp = null }
@@ -134,6 +162,7 @@ router.post('/', async (req, res, next) => {
         let typeDb = await Type.findAll({
             where: { name: types }
         });
+        //console.log(typeDb)
         newPoke.addType(typeDb)
         res.send('Poke created successfully')
 

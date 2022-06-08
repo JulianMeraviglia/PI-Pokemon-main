@@ -9,4 +9,5 @@ export const GET_POKE_BY_NAME = 'GET_POKE_BY_NAME'
 export const ORDER_BY_ATTACK = 'ORDER_BY_ATTACK'
 export const FILTER_ORIGIN = 'FILTER_ORIGIN'
 export const ORDER_BY_NAME = 'ORDER_BY_NAME'
+
 export const FILTER_BY_TYPE = 'FILTER_BY_TYPE'

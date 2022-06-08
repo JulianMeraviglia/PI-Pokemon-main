@@ -1,4 +1,4 @@
-import { GET_POKES, GET_TYPES, POST_POKE, GET_DETAIL, CLEAN_DETAIL, CHANGE_LOADING, GET_POKE_BY_NAME, ORDER_BY_ATTACK, FILTER_ORIGIN, ORDER_BY_NAME, FILTER_BY_TYPE, CLEAN_POKES } from "../actions/actionsTypes";
+import { GET_POKES, GET_TYPES, POST_POKE, GET_DETAIL, CLEAN_DETAIL, CHANGE_LOADING, GET_POKE_BY_NAME, ORDER_BY_ATTACK,  FILTER_ORIGIN, ORDER_BY_NAME, FILTER_BY_TYPE, CLEAN_POKES } from "../actions/actionsTypes";
 
 
 
@@ -104,7 +104,9 @@ function rootReducer(state = initialstate, action) {
 
         case ORDER_BY_NAME:
             // hago un map para crear una copia del objeto y asi disparar el renderizado por la store directamente
-            let pokesToOrder = state.pokes.map(p => p)
+            //let pokesToOrder = state.pokes.map(p => p)
+            let pokesToOrder = [...state.pokes]
+            //let pokesToOrder =state.pokes
 
 
             let sorterArr = action.payload === 'asc' ?
@@ -128,6 +130,8 @@ function rootReducer(state = initialstate, action) {
                 pokes: sorterArr
             }
 
+        
+
 
         case FILTER_BY_TYPE:
             const typesFilter = action.payload === 'all' ? state.allPokes : state.allPokes.filter(p => p.types.find(t => t === action.payload));
@@ -135,6 +139,8 @@ function rootReducer(state = initialstate, action) {
                 ...state,
                 pokes: typesFilter
             }
+
+       
 
 
 

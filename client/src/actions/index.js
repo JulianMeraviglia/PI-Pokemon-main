@@ -18,6 +18,8 @@ export function getPokes() {
     }
 }
 
+
+
 export function getTypes() {
     return async function (dispatch) {
         try {
@@ -31,6 +33,9 @@ export function getTypes() {
         }
     }
 }
+
+
+
 
 export function postPoke(payload) {
     return async function () {
@@ -105,6 +110,8 @@ export function orderByName(payload) {
     }
 }
 
+
+
 export function filterByType(payload) {
     return {
         type: FILTER_BY_TYPE,
@@ -116,3 +123,5 @@ export function cleanPokes() {
         type: CLEAN_POKES
     }
 }
+
+

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { createRecipe, getDiets } from '../../redux/actions';
 // /* import validate from './validate'; */
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { getPokes, getTypes, postPoke, changeLoading, cleanPokes, cleanDetail } from '../../actions';
+import { getTypes, postPoke, changeLoading, cleanPokes, cleanDetail } from '../../actions';
 
 import styles from './pokeCreate.module.css';
 import { validate } from './validate';
@@ -98,10 +97,10 @@ export default function PokeCreate() {
             img: '',
             types: []
         })
-        
-        
+
+
         history.push('/home');
-        
+
         dispatch(changeLoading());
 
     }

@@ -3,33 +3,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getDetail, cleanDetail, cleanPokes, changeLoading } from "../../actions";
 import Loader from "../Loader/Loader";
-import NavBar from "../NavBar/NavBar";
 import styles from './detail.module.css';
 
 export default function Detail(props) {
     const pokeDetail = useSelector(state => state.detail);
-    //const loading = useSelector((state) => state.loading);
+    
 
     const dispatch = useDispatch();
     const { id } = useParams()
+
+    
 
     useEffect(() => {
         dispatch(getDetail(id))
     }, [dispatch, id]);
 
-    // useEffect(() => {
-    //     return dispatch(loadingAgain())
-    // }, [dispatch]);
-
-    // function handleDogDelete() {
-    //     dispatch(deleteDog(dogId))
-    // };
+    
 
     function handleClick() {
         dispatch(cleanPokes())
         dispatch(cleanDetail());
         dispatch(changeLoading());
     }
+
+    
 
 
     return (
@@ -44,6 +41,7 @@ export default function Detail(props) {
                 null :
                 <div  >
                     <Link className={styles.home} to="/home" onClick={() => handleClick()} >Home</Link>
+                    {/* <  SearchBar /> */}
                 </div>
             }
 
@@ -77,6 +75,8 @@ export default function Detail(props) {
 
                                             <div className={styles.infoDetails}><span className={styles.infoInfo}><b className={styles.infotitle}>Tipos: </b>
                                                 {pokeDetail[0].types.length === 1 ? pokeDetail[0].types[0] : pokeDetail[0].types.join(', ')}</span></div>
+
+                                            
 
 
                                         </div>

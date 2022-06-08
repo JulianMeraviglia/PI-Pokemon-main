@@ -1,11 +1,12 @@
 export const validate = (allPokesCheck, input) => {
-    let errors = {};
-    let existent = false;
+    let errors = {};    
     errors.button = false;
 
 
-    allPokesCheck.map(p => p.name.toLowerCase() === input.name.toLowerCase() ? existent = true : null);
-    if (existent) {
+    
+
+    let pokeExistent = allPokesCheck.filter(poke => poke.name.toLowerCase() === input.name.toLowerCase())
+    if (pokeExistent.length) {
         errors.name = 'Este Poke ya existe'
 
     }
@@ -14,12 +15,10 @@ export const validate = (allPokesCheck, input) => {
     if (!input.name) {
         errors.name = "Nombre es obligatorio";
 
-    } else if (!input.name === '') {
-
     } else if (!/^[a-zA-Z]+$/.test(input.name)) {
         errors.name = "Nombre no valido";
 
-    }else if (input.name.length > 15) {
+    } else if (input.name.length > 15) {
         errors.name = "Maximo 15 letras";
 
     }

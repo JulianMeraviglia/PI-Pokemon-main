@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-import { getPokes, orderByAttack, filterByOrigin, orderByName, getTypes, filterByType, changeLoading, cleanPokes } from '../../actions';
+import { getPokes, orderByAttack, filterByOrigin, orderByName,  getTypes, filterByType, changeLoading, cleanPokes } from '../../actions';
 import SearchBar from '../SearchBar/SearchBar';
 import Card from '../Card/Card'
 import Loader from '../Loader/Loader';
@@ -13,7 +13,7 @@ import Pagination from '../Pagination/Pagination';
 import styles from './home.module.css'
 
 export default function Home() {
-
+   
     const allPokes = useSelector((state) => state.pokes);
     const loading = useSelector((state) => state.loading);
     const dispatch = useDispatch();
@@ -25,6 +25,7 @@ export default function Home() {
     const indexOfLastPoke = currentPage * pokesPerPage;
     const indexOfFirstPoke = indexOfLastPoke - pokesPerPage;
     const currentPokes = allPokes.slice(indexOfFirstPoke, indexOfLastPoke);
+    //const [order, setOrder] = useState('');
 
 
     const pagination = (pageNumber) => {
@@ -52,6 +53,7 @@ export default function Home() {
         setCurrentPage(1);
         //setOrder(e.target.value);
     }
+    
 
     function handleFilterByOrigin(e) {
         e.preventDefault();
@@ -114,9 +116,10 @@ export default function Home() {
                         </select>
                         <select className={styles.contentSelect} onChange={e => handleAttack(e)} value='disabled'>
                             <option value=''>Ataque</option>
-                            <option value='max_attack'>+ Attack </option>
-                            <option value='min_attack' >- Attack </option>
+                            <option value='max_attack'>+ Ataque </option>
+                            <option value='min_attack' >- Ataque </option>
                         </select>
+                        
 
                         <button className={styles.ban2} onClick={e => { handleUpdate(e) }} >
                             <div>Todos los Pokes</div>
@@ -128,7 +131,7 @@ export default function Home() {
                 null}
 
             {allPokes.length >= 12 ?
-                <Pagination pokesPerPage={pokesPerPage} allPokes={allPokes.length} pagination={pagination} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                <Pagination pokesPerPage={pokesPerPage} allPokes={allPokes.length} pagination={pagination} currentPage={currentPage} />
                 : null
             }
 

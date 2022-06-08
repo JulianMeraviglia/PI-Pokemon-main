@@ -1,276 +1,286 @@
 .pokemonCreatePage {
-    min-height: 100vh;
-    min-width: 100vh;
-    font-size: 25px;
-    color: white;
-    /* background-image: url(https://images.alphacoders.com/235/235203.png); */
-    background-image: url('../images/create.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-  
-  .exitSearchAndCreateNav {
-    width: 100%;
-    position: relative;
-    display: flex;
-    /* height: 50px; */
-    /* background-color: rgba(0, 0, 0, 0.55); */
-    /* border-radius: 0px 0px 25px 25px; */
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
-    /* border-bottom: 1px solid rgba(255, 255, 255, 0.3); */
-    /* color: #EFFCD5; */
-    font-size: 1em;
-    letter-spacing: .2rem;
-    /* text-decoration: none; */
-  }
-  
-  .back {
-    color: #2fe162;
-    transition: .3s;
-  }
-  
-  .back:hover {
-    color: #ce1111;
-  }
-  
-  .pokemonCreateContainer {
-    font-size: 1rem;
-    position: absolute;
-    top: 50%;
-    left: 15%;
-    transform: translate(-50%, -50%);
-    width: 100vw;
-    height: 650px;
-    max-width: 400px;
-    margin-top: 30px;
-    background-color: rgba(236, 236, 236, 0.3);
-    border-radius: 70px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;    
-    animation-name: appear;
-    animation-duration: 2s;
-  }
+  min-height: 100vh;
+  min-width: 100vh;
+  font-size: 25px;
+  color: white;
+  /* background-image: url(https://images.alphacoders.com/235/235203.png); */
+  background-image: url('../images/create.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
- 
+.exitSearchAndCreateNav {
+  width: 100%;
+  position: relative;
+  display: flex;
+  /* height: 50px; */
+  /* background-color: rgba(0, 0, 0, 0.55); */
+  /* border-radius: 0px 0px 25px 25px; */
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.3); */
+  /* color: #EFFCD5; */
+  font-size: 1em;
+  letter-spacing: .2rem;
+  /* text-decoration: none; */
+}
+
+.back {
+  font-family: 'Montserrat', sans-serif;
+  width: 100px;
+
+  font-size: 1em;
+  letter-spacing: .2rem;
+  color: #043988;
+  transition: .3s;
+  background-color: aqua;
+  border-radius: 20px;
+  padding: 5px;
+
+}
+
+.back:hover {
+  color: white;
+  background-color: #11ce3d;
+}
+
+.pokemonCreateContainer {
+  font-size: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 650px;
+  max-width: 400px;
+  margin-top: 30px;
+  background-color: rgba(236, 236, 236, 0.3);
+  border-radius: 70px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  animation-name: appear;
+  animation-duration: 2s;
+}
 
 
-  .pokemonCreate {
-    margin: 0% 10% 0 10%;
-  }
-  
-  .pokemonCreate h1 {
-    color: #2fe162;
-    font-size: 2em;
-    margin: 30px 0 45px 0;
-  }
-  
-  .pokemonCreate form {
-    max-height: 400px;
-  }
-  
-  
- 
-  
-  /* End Progress bar */
-  
-  .pokemonCreate input {
-    width: 60px
-  }
-  
-  .pokemonCreate label {
-    font-size: .9em;
-    color: rgba(27, 217, 33);
-  
-  }
-  
-  .pokemonCreate .inputContainer {
-    display: flex;
-    flex-direction: row;
-    margin: 30px;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  .pokemonCreate input {
-    display: flex;
-    position: absolute;
-    left: 50%;
-    background-color: rgba(27, 217, 33, 0.3);
-    border: 1px solid black;
-    border-radius: 3px;
-    font-weight: bolder;
-    width: 90px;
-    height: 20px;
-    text-align: center;
-  }
 
-  .pokemonCreate .selectTypes {
-    /* font-family: 'Press Start 2P', cursive; */
-    /* color: #EFFCD5; */
-    border-radius: 5px;
-    border: 1px solid black;
-    font-size: .8rem;
-    
-    height: 25px;
-    outline: 0px;
-    width: 100px;
-    text-align: center;
-    
-  
-  }
-  
-  .pokemonCreate input:focus{
-    font-weight: lighter;
-  }
-  
-  .pokemonCreate select {
-    cursor: pointer;
-    display: flex;
-    position: absolute;
-    left: 49%;
-    background-color: rgba(255, 228, 196, 0.487);
-    border: 1px solid black;
-    border-radius: 2px;
-  }
-  
-  .pokemonCreate .inputName {
-    width: 200px;
-    position: absolute;
-    justify-content: center;
-    left: 39%;
-    text-align: center;
-  }
-  
-  .createButton {
-    font-family: sans-serif;
-    background-color: #00f200;
-    color: #EFFCD5;
-    border-radius: 5px;
-    border: 1px solid rgba(248, 248, 248, 0.259);
-    font-size: 1rem;
-    padding: 5px;
-    height: 35px;
-    padding: 5px;
-    text-align: center;
-    color: black;
-    transition: .3s;
-    width: 50%;
-    margin-top: 60px;
-  }
-  
-  .createButton:hover {
-    background-color: #006200;
-    color: black;
-    cursor: pointer;
-  }
-  
-  .createButton:active {
-    box-shadow: 0px 0px 15px 0px #e1e1e1;
-  }
-  
-  .createButton:focus {
-    outline: 0;
-  }
-  
-  .createButton:disabled {
-    background-color: red;
-    color: white;
-  }
-  
-  
-  
-  /* Types */
-  .pokemonCreate .selectTypes  {
-    background-color: rgba(27, 217, 33, 0.3);
-  }
-  
-  /* .optionsSelect {
+
+.pokemonCreate {
+  margin: 0% 10% 0 10%;
+}
+
+.pokemonCreate h1 {
+  color: #2fe162;
+  font-size: 2em;
+  margin: 30px 0 45px 0;
+}
+
+.pokemonCreate form {
+  max-height: 400px;
+}
+
+
+
+
+/* End Progress bar */
+
+.pokemonCreate input {
+  width: 60px
+}
+
+.pokemonCreate label {
+  font-size: .9em;
+  color: rgba(27, 217, 33);
+
+}
+
+.pokemonCreate .inputContainer {
+  display: flex;
+  flex-direction: row;
+  margin: 30px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.pokemonCreate input {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  background-color: rgba(27, 217, 33, 0.3);
+  border: 1px solid black;
+  border-radius: 3px;
+  font-weight: bolder;
+  width: 90px;
+  height: 20px;
+  text-align: center;
+}
+
+.pokemonCreate .selectTypes {
+  /* font-family: 'Press Start 2P', cursive; */
+  /* color: #EFFCD5; */
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: .8rem;
+
+  height: 25px;
+  outline: 0px;
+  width: 100px;
+  text-align: center;
+
+
+}
+
+.pokemonCreate input:focus {
+  font-weight: lighter;
+}
+
+.pokemonCreate select {
+  cursor: pointer;
+  display: flex;
+  position: absolute;
+  left: 49%;
+  background-color: rgba(255, 228, 196, 0.487);
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+.pokemonCreate .inputName {
+  width: 200px;
+  position: absolute;
+  justify-content: center;
+  left: 39%;
+  text-align: center;
+}
+
+.createButton {
+  font-family: sans-serif;
+  background-color: #00f200;
+  color: #EFFCD5;
+  border-radius: 5px;
+  border: 1px solid rgba(248, 248, 248, 0.259);
+  font-size: 1rem;
+  padding: 5px;
+  height: 35px;
+  padding: 5px;
+  text-align: center;
+  color: black;
+  transition: .3s;
+  width: 50%;
+  margin-top: 60px;
+}
+
+.createButton:hover {
+  background-color: #006200;
+  color: black;
+  cursor: pointer;
+}
+
+.createButton:active {
+  box-shadow: 0px 0px 15px 0px #e1e1e1;
+}
+
+.createButton:focus {
+  outline: 0;
+}
+
+.createButton:disabled {
+  background-color: red;
+  color: white;
+}
+
+
+
+/* Types */
+.pokemonCreate .selectTypes {
+  background-color: rgba(27, 217, 33, 0.3);
+}
+
+/* .optionsSelect {
     position: absolute;
     color: black;
   } */
-  
-  .typeSelectedContainer {
-    display: flex;
-   
-    position: absolute;
-    justify-content: space-between;
-    top: 80%;
-    
-    left: 10%;
-    
-    
-  }
-  
-  .typeSelectedContainerIn {
-    color: black;
-    font-size: .8em;
-    background-color: #2fe66c34;
-    /* border-radius: 20px 5px 40px 20px; */
-    border-radius: 10px;
-    padding: 0;
-    display: inline-flex;
-    margin-left: 5px;
-    text-align: center;
-    justify-content: center;
-    width: 140px;
-    justify-content: space-between;
-    animation-name: appear;
-    animation-duration: 2s;
-  }
-  
-  .typeSelected {
-    position:relative; 
-    display: inline-flex; 
-    align-items: center; 
-    justify-content: center;
-    margin-left: 40px;
-  }
-  
-  /* .typeSelectedContainer .typeSelectedContainerIn img {
+
+.typeSelectedContainer {
+  display: flex;
+
+  position: absolute;
+  justify-content: space-between;
+  top: 80%;
+
+  left: 10%;
+
+
+}
+
+.typeSelectedContainerIn {
+  color: black;
+  font-size: .8em;
+  background-color: #2fe66c34;
+  /* border-radius: 20px 5px 40px 20px; */
+  border-radius: 10px;
+  padding: 0;
+  display: inline-flex;
+  margin-left: 5px;
+  text-align: center;
+  justify-content: center;
+  width: 140px;
+  justify-content: space-between;
+  animation-name: appear;
+  animation-duration: 2s;
+}
+
+.typeSelected {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 40px;
+}
+
+/* .typeSelectedContainer .typeSelectedContainerIn img {
     width: 30px;
     position: relative;
     height: 30px;
     left: 0;
   } */
-  /* End Types */
-  
-  .xButton {
-    border-radius: 100%;
-    border: none;
-    color: white;
-    margin: 0 auto;
-    background-color: black;
-    width: 12px;
-    height: 12px;
-    font-size: .7em;
-    margin-top: 3px;
-    margin-right: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-  
-  
-  .pokemonCreate span {
-    position: absolute;
-    margin-top: 25px;
-    
-    color: red;
-    font-size: 0.9em;
-  }
-  
-  /* .pokemonCreate input::placeholder {
+/* End Types */
+
+.xButton {
+  border-radius: 100%;
+  border: none;
+  color: white;
+  margin: 0 auto;
+  background-color: black;
+  width: 12px;
+  height: 12px;
+  font-size: .7em;
+  margin-top: 3px;
+  margin-right: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+.pokemonCreate span {
+  position: absolute;
+  margin-top: 25px;
+
+  color: red;
+  font-size: 0.9em;
+}
+
+/* .pokemonCreate input::placeholder {
     color: rgba(0, 0, 0);
     font-size: 0.9em;
     justify-content: center;
     margin: 0 auto;
     text-align: center;
   } */
-  
-  /* .pokemonCreate input:focus::placeholder {
+
+/* .pokemonCreate input:focus::placeholder {
     color: transparent;
   }
   
